@@ -41,16 +41,17 @@ const events = function() {
 
   buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
-      if (e.target.textContent === "="){
+      const text = e.target.textContent;
+      if (text === "="){
        userInput(buttonContent);
        display.textContent = buttonContent;
-      } else if (e.target.textContent === "AC") {
+      } else if (text === "AC") {
         buttonContent = "";
         display.textContent = "";
 
 
       } else  {
-      buttonContent += (e.target.textContent);
+      buttonContent += (text);
       display.textContent = buttonContent;
       }
     });

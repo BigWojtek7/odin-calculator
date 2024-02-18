@@ -29,3 +29,16 @@ const operate = function(num1, num2, operator) {
     divide(num1, num2);
   }
 }
+let buttonContent = "";
+const buttons = document.querySelectorAll("button");
+const display = document.querySelector(".display")
+
+
+
+buttons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    buttonContent += (e.target.textContent);
+    console.log(buttonContent);
+
+  });
+});

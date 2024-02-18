@@ -1,5 +1,5 @@
 const display = document.querySelector(".display");
-
+let count = 0;
 let buttonContent = "";
 const add = function(num1, num2) {
   buttonContent = num1 + num2;
@@ -49,9 +49,8 @@ const events = function() {
         buttonContent = "";
         display.textContent = "";
 
-
-      } else  {
-      buttonContent += (text);
+      } else   {
+      buttonContent += text;
       display.textContent = buttonContent;
       }
     });

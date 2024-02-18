@@ -1,20 +1,20 @@
 const display = document.querySelector(".display");
-let buttonContent = "";
+
 
 const add = function(num1, num2) {
-  buttonContent = num1 + num2;
+  display.textContent = num1 + num2;
 }
 
 const subtract = function(num1, num2) {
-  return num1 - num2;
+  display.textContent = num1 - num2;
 }
 
 const multiply = function(num1, num2) {
-  return num1 * num2;
+  display.textContent = num1 * num2;
 }
 
 const divide = function(num1, num2) {
-  return num1 / num2;
+  display.textContent = num1 / num2;
 }
 
 let num1;
@@ -34,15 +34,17 @@ const operate = function(num1, num2, operator) {
 }
 
 const events = function() {
-  
+  let buttonContent = "";
   const buttons = document.querySelectorAll("button");
 
   buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
-      if (e.target.textContent === "=") userInput(buttonContent);
+      if (e.target.textContent === "="){
+       userInput(buttonContent);
+      } else {
       buttonContent += (e.target.textContent);
       display.textContent = buttonContent;
-      
+      }
     });
   });
 }

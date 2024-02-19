@@ -7,7 +7,7 @@ let displayContent = "";
 
 const add = function(num1, num2) {
   mathResult = num1 + num2;
-  console.log(mathResult)
+  console.log("3", mathResult)
 }
 
 const subtract = function(num1, num2) {
@@ -47,7 +47,7 @@ const events = function() {
     button.addEventListener("click", (e) => {
       const input = e.target.textContent;
       if (input === "="){
-      //  userInput(mathResult);
+       userInput(mathResult);
        display.textContent = mathResult;
       } else if (input === "AC") {
         displayContent = "";
@@ -59,24 +59,26 @@ const events = function() {
           console.log(count)
           mathResult += input;
           count++
+          displayContent = "";
           console.log(count, mathResult)
         } else if (count > 0){
+          userInput(mathResult);
           displayContent = mathResult;
           mathResult += input;
           display.textContent = displayContent;
-          // userInput(mathResult);
-          // display.textContent = mathResult; 
+          displayContent = "";
 
         }
       } else if(count === 0)  {
         mathResult += input;
-        displayContent = input;
+        displayContent += input;
+        console.log("1", displayContent)
         display.textContent = displayContent;
       } else if(count > 0){
         mathResult += input;
-        displayContent = input;
-        userInput(mathResult);
-        // display.textContent = mathResult; 
+        displayContent += input;
+        display.textContent = displayContent;
+        
       }
     });
   });

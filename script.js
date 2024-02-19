@@ -47,31 +47,43 @@ const operate = function(num1, num2, operator) {
 const events = function() {
   
   const buttons = document.querySelectorAll("button");
-
+  const dot = document.querySelector("#dot")
   buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
       const input = e.target.textContent;
       if (input === "="){
        userInput(mathResult);
-       display.textContent = mathResult;
+       displayContent = mathResult
+       display.textContent = displayContent;
+       dot.disabled = false;
       } else if (input === "AC") {
         displayContent = "";
         mathResult = "";
         display.textContent = "";
         count = 0;
+        dot.disabled = false;
+      } else if (input === "."){
+        mathResult += input;
+        displayContent += input;
+        display.textContent = displayContent;
+        dot.disabled = true;
+
       } else if (input === "+" || input === "-" || input === "÷" ||input === "x" ){
         if (count === 0){
           console.log(count)
           mathResult += input;
           count++
           displayContent = "";
+          dot.disabled = false;
           console.log(count, mathResult)
+
         } else if (count > 0){
           userInput(mathResult)
           displayContent = mathResult;
           mathResult += input;
           display.textContent = displayContent;
           displayContent = "";
+          dot.disabled = false;
 
         }
       } else if(count === 0)  {
@@ -91,7 +103,7 @@ const events = function() {
 
 const userInput = function(matchResult) {
   console.log("2", mathResult)
-  let num1 = Number(matchResult.match(/\d*.\d*/).join(""));
+  let num1 = Number(matchResult.match(/\d*\.?\d/).join(""));
   let num2 = Number(mathResult.match(/(?<=[+|\-|÷|x]).*/).join(""));
   let operator = mathResult.match(/[+|\-|÷|x]/).join("");
   console.log(num1, num2, operator);

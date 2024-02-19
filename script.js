@@ -15,12 +15,17 @@ const subtract = function(num1, num2) {
 }
 
 const multiply = function(num1, num2) {
-  mathResult = num1 * num2;
-  console.log(mathResult)
+  mathResult = Math.round((num1 * num2) * 1000) / 1000
+  console.log("5", mathResult)
 }
 
 const divide = function(num1, num2) {
-  mathResult = num1 / num2;
+  if (num2 === 0){
+    mathResult = "Very Funny :)"
+  } else {
+    mathResult = Math.round((num1 / num2) * 100000) / 100000
+    console.log(mathResult)
+  }
 }
 
 let num1;
@@ -62,7 +67,7 @@ const events = function() {
           displayContent = "";
           console.log(count, mathResult)
         } else if (count > 0){
-          userInput(mathResult);
+          userInput(mathResult)
           displayContent = mathResult;
           mathResult += input;
           display.textContent = displayContent;
@@ -86,7 +91,7 @@ const events = function() {
 
 const userInput = function(matchResult) {
   console.log("2", mathResult)
-  let num1 = Number(matchResult.match(/\d*/).join(""));
+  let num1 = Number(matchResult.match(/\d*.\d*/).join(""));
   let num2 = Number(mathResult.match(/(?<=[+|\-|÷|x]).*/).join(""));
   let operator = mathResult.match(/[+|\-|÷|x]/).join("");
   console.log(num1, num2, operator);

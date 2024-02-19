@@ -100,18 +100,33 @@ const events = function() {
     });
   });
 }
+events()
 
 const userInput = function(matchResult) {
   console.log("2", mathResult)
-  let num1 = Number(matchResult.match(/\d*\.?\d/).join(""));
-  let num2 = Number(mathResult.match(/(?<=[+|\-|÷|x]).*/).join(""));
-  let operator = mathResult.match(/[+|\-|÷|x]/).join("");
-  console.log(num1, num2, operator);
-  operate(num1, num2, operator);
+  let num1 = matchResult.match(/\d*\.?\d/);
+  let num2 = mathResult.match(/(?<=[+|\-|÷|x]).*/);
+  let operator = mathResult.match(/[+|\-|÷|x]/);
+  if (num1 !== null && num2 !== null && operator !== null){
+    if(num2[0] !== ""){
+      console.log(num1, num2, operator);
+      num1 = Number(num1.join(""));
+      num2 = Number(num2.join(""));
+      operator = operator.join("");
+      console.log(num2);
+      operate(num1, num2, operator);
+      
+    } else{
+      mathResult = num1[0]
+
+
+    }
+    
+    
+  }
 }
 
 
 
 
 
-events()

@@ -1,5 +1,7 @@
-const display = document.querySelector(".display");
 
+
+const display = document.querySelector(".display");
+let clickCount = 0;
 
 let count = 0;
 
@@ -52,23 +54,36 @@ document.addEventListener("keydown", (e) => {
     displayContent += e.key;
     console.log("1", displayContent)
     display.textContent = displayContent;
-    };
-  });
+  } else if( e.key === "Enter"){
+    console.log(e.key)
+  }
+
+});
   
+
 const events = function() {
-
-  
-
 
 
   const buttons = document.querySelectorAll("button");
+  
+  // buttons.forEach((button) => {
+  //   if (clickCount < 7){
+    
+  //   }
+  // });
+
   const dot = document.querySelector("#dot")
+  console.log(clickCount)
   buttons.forEach((button) => {
+   
+    
     button.addEventListener("click", (e) => {
     button.style.filter = "brightness(130%)"
     setTimeout(() => button.style.filter = "brightness(100%)", 100)
+    clickCount++
+    
 
-      
+
       const input = e.target.textContent;
       if (input === "="){
        userInput(mathResult);
@@ -132,10 +147,22 @@ const events = function() {
         display.textContent = displayContent;
         
       }
+      // buttons.forEach((button) => {
+      //   if(clickCount > 7){
+      //     button.disabled = true;
+      //     op = button.textContent
+      //     if (op === "+" && op === "-" && op === "÷") button.disabled = false;
+      //   }
+      //   console.log(clickCount)
+        
+      
     });
+    
+
   });
+  
+
 }
-events()
 
 const userInput = function(matchResult) {
   console.log("2", mathResult)
@@ -162,6 +189,7 @@ const userInput = function(matchResult) {
 }
 
 
+events()
 
 
-
+// const calculateResult = 

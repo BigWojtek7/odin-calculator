@@ -56,6 +56,8 @@ const events = function() {
        displayContent = mathResult
        display.textContent = displayContent;
        dot.disabled = false;
+       count = 0;
+       console.log(mathResult)
       } else if (input === "AC") {
         displayContent = "";
         mathResult = "";
@@ -67,6 +69,19 @@ const events = function() {
         displayContent += input;
         display.textContent = displayContent;
         dot.disabled = true;
+      } else if (input === "C") {
+        if (count > 0){
+          console.log(mathResult)
+          mathResult = mathResult.match(/\d*\.?\d*./)[0]
+          displayContent = ""
+          display.textContent = displayContent;
+        } else {
+          displayContent = "";
+          mathResult = "";
+          display.textContent = "";
+          count = 0;
+          dot.disabled = false;
+        }
 
       } else if (input === "+" || input === "-" || input === "÷" ||input === "x" ){
         if (count === 0){
@@ -84,6 +99,7 @@ const events = function() {
           display.textContent = displayContent;
           displayContent = "";
           dot.disabled = false;
+          console.log(mathResult)
 
         }
       } else if(count === 0)  {

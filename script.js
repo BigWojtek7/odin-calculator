@@ -43,13 +43,31 @@ const operate = function(num1, num2, operator) {
     divide(num1, num2);
   }
 }
-
-const events = function() {
+document.addEventListener("keydown", (e) => {
+  console.log(e.code)
+  if (e.key < 10){
   
+    mathResult += e.key;
+    displayContent += e.key;
+    console.log("1", displayContent)
+    display.textContent = displayContent;
+    };
+  });
+  
+const events = function() {
+
+  
+
+
+
   const buttons = document.querySelectorAll("button");
   const dot = document.querySelector("#dot")
   buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
+
+
+
+      
       const input = e.target.textContent;
       if (input === "="){
        userInput(mathResult);

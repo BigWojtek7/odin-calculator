@@ -4,6 +4,7 @@ body{
   justify-content: center;
   align-items: center;
   height: 100vh;
+  font-family: sans-serif;
   
 }
 
@@ -17,8 +18,8 @@ body{
 }
 .display{
   height: 60px;
-  padding: 10px 10px 15px 10px;
-  font-size: 60px;
+  padding: 0 10px 20px 10px;
+  font-size: 70px;
   background: #bdbdbd;
   margin-bottom: 5px;
   vertical-align: middle;

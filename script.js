@@ -1,5 +1,5 @@
 const display = document.querySelector(".display");
-display.textContent.maxLength=5
+
 
 let count = 0;
 
@@ -65,8 +65,8 @@ const events = function() {
   const dot = document.querySelector("#dot")
   buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
-
-
+    button.style.filter = "brightness(130%)"
+    setTimeout(() => button.style.filter = "brightness(100%)", 100)
 
       
       const input = e.target.textContent;

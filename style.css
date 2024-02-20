@@ -12,13 +12,15 @@ body{
 }
 .display{
   height: 40px;
-  margin: 10px 10px 15px 10px;
+  padding: 10px 10px 15px 10px;
+  font-size: 40px;
+  background: #bdbdbd;
 }
 
 .buttons{
   text-align: center;
 }
-button{
+button {
   padding: 8px 32px;
   border-radius: 16px;
   background: #3882f6;
@@ -26,6 +28,28 @@ button{
   color: white;
   font-weight: 600;
   margin: 20px 10px;
-  height:40px;
+  height: 40px;
+  font-size: 19px;
+  width: 77px;
+
+}
+
+#all-clear,
+#clear
+{
+  background: #bdbdbd;
+}
+
+
+
+#all-clear,
+#n0
+{
+  width: 170px;
+}
+
+
+.operator {
+  background: #ffa500;
 }
 

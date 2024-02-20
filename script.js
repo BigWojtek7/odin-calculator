@@ -1,4 +1,5 @@
 const display = document.querySelector(".display");
+display.textContent.maxLength=5
 
 let count = 0;
 

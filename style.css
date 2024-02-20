@@ -1,34 +1,44 @@
 body{
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
 }
 
 .container{
   border: #3882f6 5px solid;
-  width: 400px;
+  width: 370px;
   height: 500px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  background-color: rgb(161, 161, 161);
 }
 .display{
-  height: 40px;
+  height: 60px;
   padding: 10px 10px 15px 10px;
-  font-size: 40px;
+  font-size: 60px;
   background: #bdbdbd;
+  margin-bottom: 5px;
+  vertical-align: middle;
+  border: rgb(93, 92, 92) 5px solid;
 }
 
 .buttons{
   text-align: center;
+  
 }
 button {
+  
   padding: 8px 32px;
   border-radius: 16px;
   background: #3882f6;
   border: 1px solid #3882f6;
   color: white;
   font-weight: 600;
-  margin: 20px 10px;
-  height: 40px;
+  margin: 10px 5px;
+  height: 60px;
   font-size: 19px;
   width: 77px;
 

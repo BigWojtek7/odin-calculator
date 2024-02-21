@@ -1,22 +1,17 @@
 
 
 const display = document.querySelector(".display");
-let clickCount = 0;
 let count = 0;
 
 
 let mathResult = "";
 let displayContent = "";
 
-let num1;
-let num2;
-let operator;
 
 const getMouseInput = function() {
   getKeyboardInput()
   const buttons = document.querySelectorAll("button");
   const dot = document.querySelector("#dot")
-  console.log(clickCount)
   buttons.forEach((button) => {
    
     button.addEventListener("click", (e) => {
@@ -57,11 +52,7 @@ const clear = function (){
     displayContent = "";
     display.textContent = displayContent;
   } else {
-    displayContent = "";
-    mathResult = "";
-    display.textContent = "";
-    count = 0;
-    dot.disabled = false;
+    allClear()
   }
 }
 

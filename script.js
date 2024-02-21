@@ -2,7 +2,7 @@
 
 const display = document.querySelector(".display");
 let count = 0;
-
+let equalNumber = 0;
 
 let mathResult = "";
 let displayContent = "";
@@ -42,15 +42,15 @@ const saveEqual = function (){
   display.textContent = displayContent;
   dot.disabled = false;
   count = 0;
-  console.log(mathResult)
+  equalNumber++;
 }
 
 const clear = function (){
   if (count > 0){
-    console.log(mathResult)
     mathResult = mathResult.match(/\d*\.?\d*./)[0];
     displayContent = "";
     display.textContent = displayContent;
+    display.textContent = "0";
   } else {
     allClear()
   }
@@ -61,7 +61,9 @@ const allClear = function () {
   mathResult = "";
   display.textContent = "";
   count = 0;
+  equalNumber = 0;
   dot.disabled = false;
+  display.textContent = "0";
 }
 
 const saveDot = function (input) {
@@ -73,12 +75,12 @@ const saveDot = function (input) {
 
 const saveOperator = function (input) {
   if (count === 0){
-    console.log(count)
     mathResult += input;
     count++
     displayContent = "";
     dot.disabled = false;
     dotUse = 0
+    equalNumber = 0
 
   } else if (count > 0){
     userInput(mathResult)
@@ -87,34 +89,29 @@ const saveOperator = function (input) {
     display.textContent = displayContent;
     displayContent = "";
     dot.disabled = false;
-    console.log(mathResult)
     dotUse=0;
-    console.log(count)
+    equalNumber = 0;
+
 
   }
 
 }
 const saveNumber = function (input) {
-  // if (count === 0) allClear()
+  if (equalNumber === 1) allClear()
   mathResult += input;
   displayContent += input;
-  console.log("input", input)
-  console.log("co tu sie", displayContent)
   display.textContent = displayContent;
 }
 
 const userInput = function(matchResult) {
-  console.log("2", mathResult)
   let num1 = matchResult.match(/\d*\.?\d/);
   let num2 = mathResult.match(/(?<=[+|\-|÷|x]).*/);
   let operator = mathResult.match(/[+|\-|÷|x]/);
   if (num1 !== null && num2 !== null && operator !== null){
     if(num2[0] !== ""){
-      console.log(num1, num2, operator);
       num1 = Number(num1.join(""));
       num2 = Number(num2.join(""));
       operator = operator.join("");
-      console.log(num2);
       operate(num1, num2, operator);      
     } else{
       mathResult = num1[0];
@@ -136,7 +133,7 @@ const operate = function(num1, num2, operator) {
 
 const add = function(num1, num2) {
   mathResult = num1 + num2;
-  console.log("3", mathResult)
+  if (mathResult > 99999999) mathResult = changeToExponential(mathResult);
 }
 
 const subtract = function(num1, num2) {
@@ -144,8 +141,8 @@ const subtract = function(num1, num2) {
 }
 
 const multiply = function(num1, num2) {
-  mathResult = Math.round((num1 * num2) * 1000) / 1000
-  console.log("5", mathResult)
+  mathResult = Math.round((num1 * num2) * 100000) / 100000
+  if (mathResult > 99999999) mathResult = changeToExponential(mathResult);
 }
 
 const divide = function(num1, num2) {
@@ -153,7 +150,6 @@ const divide = function(num1, num2) {
     mathResult = "Nice Try :)"
   } else {
     mathResult = Math.round((num1 / num2) * 100000) / 100000
-    console.log(mathResult)
   }
 }
 
@@ -166,7 +162,6 @@ const getKeyboardInput = function (){
     } else if ( e.key === "Enter"){
       saveEqual();
       dotUse = 0
-      console.log("count", count);
     } else if (e.key === "Backspace"){
       clear();
       dotUse = 0;
@@ -177,5 +172,8 @@ const getKeyboardInput = function (){
   });
 }
 
+const changeToExponential = function(number) {
+  return number = number.toExponential(3)
+}
 
 getMouseInput()

@@ -24,6 +24,7 @@ body{
   margin-bottom: 5px;
   vertical-align: middle;
   border: rgb(93, 92, 92) 5px solid;
+  text-align: right;
 }
 
 .buttons{

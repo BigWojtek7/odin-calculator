@@ -2,8 +2,8 @@
 
 const display = document.querySelector(".display");
 let clickCount = 0;
-
 let count = 0;
+
 
 let mathResult = "";
 let displayContent = "";
@@ -46,22 +46,27 @@ const operate = function(num1, num2, operator) {
     divide(num1, num2);
   }
 }
-document.addEventListener("keydown", (e) => {
-  console.log(e.code)
-  if (e.key < 10){
-  
-    mathResult += e.key;
-    displayContent += e.key;
-    console.log("1", displayContent)
-    display.textContent = displayContent;
-  } else if( e.key === "Enter"){
-    console.log(e.key)
-  }
+const getKeyboardInput = function (){
+  document.addEventListener("keydown", (e) => {
+    console.log(e.code)
+    e.preventDefault();
+    if (e.key < 10){
+    
+      mathResult += e.key;
+      displayContent += e.key;
+      
+      display.textContent = displayContent;
+    } else if ( e.key === "Enter"){
+      calculateResult()
+      console.log("count", count)
+    } else if (e.key === "Backspace"){
+      
+    }
 
-});
-  
+  });
+}
 
-const events = function() {
+const getMouseInput = function() {
 
 
   const buttons = document.querySelectorAll("button");
@@ -71,27 +76,21 @@ const events = function() {
     
   //   }
   // });
-
+  getKeyboardInput()
   const dot = document.querySelector("#dot")
   console.log(clickCount)
   buttons.forEach((button) => {
    
     
     button.addEventListener("click", (e) => {
-    button.style.filter = "brightness(130%)"
-    setTimeout(() => button.style.filter = "brightness(100%)", 100)
-    clickCount++
+      button.style.filter = "brightness(130%)"
+      setTimeout(() => button.style.filter = "brightness(100%)", 100)
     
-
+      
 
       const input = e.target.textContent;
       if (input === "="){
-       userInput(mathResult);
-       displayContent = mathResult
-       display.textContent = displayContent;
-       dot.disabled = false;
-       count = 0;
-       console.log(mathResult)
+        calculateResult()
       } else if (input === "AC") {
         displayContent = "";
         mathResult = "";
@@ -136,14 +135,11 @@ const events = function() {
           console.log(mathResult)
 
         }
-      } else if(count === 0)  {
+      } else {
         mathResult += input;
         displayContent += input;
-        console.log("1", displayContent)
-        display.textContent = displayContent;
-      } else if(count > 0){
-        mathResult += input;
-        displayContent += input;
+        console.log("input", input)
+        console.log("co tu sie", displayContent)
         display.textContent = displayContent;
         
       }
@@ -189,7 +185,18 @@ const userInput = function(matchResult) {
 }
 
 
-events()
+const calculateResult = function (){
+  userInput(mathResult);
+  displayContent = mathResult
+  display.textContent = displayContent;
+  dot.disabled = false;
+  count = 0;
+  console.log(mathResult)
+}
+
+const clear = function (){
+
+}
 
 
-// const calculateResult = 
+getMouseInput()
